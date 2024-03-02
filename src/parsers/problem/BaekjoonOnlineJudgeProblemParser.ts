@@ -12,7 +12,10 @@ export class BaekjoonOnlineJudgeProblemParser extends Parser {
     const elem = htmlToElement(html);
     const task = new TaskBuilder('Baekjoon Online Judge').setUrl(url);
 
-    task.setName(elem.querySelector('#problem_title').textContent);
+    const problemId = elem.querySelector('meta[name="problem-id"]').getAttribute('content');
+
+    // task.setName(elem.querySelector('#problem_title').textContent);
+    task.setName(problemId);
 
     const constraintCells = elem.querySelectorAll('#problem-info > tbody > tr > td');
 
